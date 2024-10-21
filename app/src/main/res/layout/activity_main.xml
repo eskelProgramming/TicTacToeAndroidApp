@@ -7,13 +7,167 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnTopMid"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/gray"
+        android:text="O"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnMiddle"
+        app:layout_constraintEnd_toStartOf="@+id/btnTopRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <Button
+        android:id="@+id/btnTopLeft"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/gray"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnTopMid"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnTopRight"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/gray"
+        android:text="O"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnMiddleRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.833" />
+
+    <Button
+        android:id="@+id/btnMiddle"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/gray"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMiddleLeft"
+        app:layout_constraintEnd_toStartOf="@+id/btnMiddleRight"
+        app:layout_constraintTop_toTopOf="@+id/btnMiddleLeft"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnBottomLeft"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:backgroundTint="@color/gray"
+        android:text="O"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBottonMid"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMiddleLeft"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <Button
+        android:id="@+id/btnMiddleRight"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/gray"
+        android:text="O"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnTopRight"
+        app:layout_constraintTop_toTopOf="@+id/btnMiddle" />
+
+    <Button
+        android:id="@+id/btnBottomRight"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/gray"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMiddleRight"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <Button
+        android:id="@+id/btnBottonMid"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="@color/gray"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnBottomRight"
+        app:layout_constraintTop_toBottomOf="@+id/btnMiddle"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <Button
+        android:id="@+id/btnMiddleLeft"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/gray"
+        android:text="X"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnMiddle"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTopLeft" />
+
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginTop="60dp"
+        android:text="Player X wins!"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnBottonMid" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="381dp"
+        android:layout_height="92dp"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/black"
+        android:text="New Game"
+        android:textSize="30dp"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
