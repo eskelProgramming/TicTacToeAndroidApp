@@ -21,11 +21,11 @@
         app:layout_constraintBottom_toTopOf="@+id/btnMiddleRight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnTopMid"
+        app:layout_constraintStart_toEndOf="@+id/btnTopMiddle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnTopMid"
+        android:id="@+id/btnTopMiddle"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:backgroundTint="@color/gray"
@@ -49,7 +49,7 @@
         android:textSize="50dp"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btnMiddleLeft"
-        app:layout_constraintEnd_toStartOf="@+id/btnTopMid"
+        app:layout_constraintEnd_toStartOf="@+id/btnTopMiddle"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,11 +63,11 @@
         android:textColor="@color/black"
         android:textSize="50dp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnBottonMid"
+        app:layout_constraintBottom_toTopOf="@+id/btnBottomMiddle"
         app:layout_constraintEnd_toStartOf="@+id/btnMiddleRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnMiddleLeft"
-        app:layout_constraintTop_toBottomOf="@+id/btnTopMid" />
+        app:layout_constraintTop_toBottomOf="@+id/btnTopMiddle" />
 
     <Button
         android:id="@+id/btnBottomLeft"
@@ -78,8 +78,8 @@
         android:textColor="@color/black"
         android:textSize="50dp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/btnBottonMid"
+        app:layout_constraintBottom_toTopOf="@+id/tvPlayerInfo"
+        app:layout_constraintEnd_toStartOf="@+id/btnBottomMiddle"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMiddleLeft" />
@@ -108,14 +108,14 @@
         android:textColor="@color/black"
         android:textSize="50dp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/tvPlayerInfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnBottonMid"
+        app:layout_constraintStart_toEndOf="@+id/btnBottomMiddle"
         app:layout_constraintTop_toBottomOf="@+id/btnMiddleRight" />
 
     <Button
-        android:id="@+id/btnBottonMid"
+        android:id="@+id/btnBottomMiddle"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:backgroundTint="@color/gray"
@@ -123,7 +123,7 @@
         android:textColor="@color/black"
         android:textSize="50dp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/tvPlayerInfo"
         app:layout_constraintEnd_toStartOf="@+id/btnBottomRight"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnBottomLeft"
@@ -145,23 +145,25 @@
         app:layout_constraintTop_toBottomOf="@+id/btnTopLeft" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvPlayerInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="36dp"
-        android:text="Player X wins!"
+        android:layout_marginBottom="32dp"
+        android:text="@string/player_x_s_turn"
         android:textColor="@color/black"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/button10"
+        app:layout_constraintBottom_toTopOf="@+id/btnNewGame"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/btnNewGame"
         android:layout_width="381dp"
         android:layout_height="92dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/gray"
+        android:onClick="newGame"
         android:text="New Game"
         android:textColor="@color/black"
         android:textSize="30dp"
