@@ -117,11 +117,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        return isHorizontalWin(buttonList)
+        return isHorizontalWin(buttonList) || isVerticalWin(buttonIndex)
     }
 
     private fun isHorizontalWin(buttonList: List<Button>) : Boolean {
-        var win = true;
+        var win = true
 
         for (button in buttonList) {
             // if it's x's turn they all need to be x's
@@ -132,6 +132,22 @@ class MainActivity : AppCompatActivity() {
                 if (!button.text.equals("O")) win = false
             }
         }
+
+        return win
+    }
+
+    private fun isVerticalWin(buttonIndex : Int) : Boolean {
+        var win = true
+
+        for (list in buttons) {
+            if (xTurn) {
+                if (!list[buttonIndex].text.equals("X")) win = false
+            }
+            else {
+                if (!list[buttonIndex].text.equals("O")) win = false
+            }
+        }
+
         return win
     }
 }
