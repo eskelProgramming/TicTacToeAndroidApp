@@ -44,7 +44,7 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:backgroundTint="@color/gray"
-        android:onClick="makePlay"
+        android:onClick="newGame"
         android:text="X"
         android:textColor="@color/black"
         android:textSize="50dp"
