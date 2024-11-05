@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnBottomMiddle: Button
     private lateinit var btnBottomRight: Button
 
-    private lateinit var buttons: List<Button>
+    private lateinit var buttons: List<List<Button>>
 
     private lateinit var tvPlayerInfo: TextView
 
@@ -49,14 +49,19 @@ class MainActivity : AppCompatActivity() {
         btnBottomMiddle = findViewById(R.id.btnBottomMiddle)
         btnBottomRight = findViewById(R.id.btnBottomRight)
 
+        // Made as a two dimensional array so that it's
+        // easier to find wins
         buttons = listOf(
-            btnTopLeft, btnTopMid, btnTopRight, btnMiddleLeft, btnMiddle,
-            btnMiddleRight, btnBottomLeft, btnBottomMiddle, btnBottomRight
+            listOf(btnTopLeft, btnTopRight, btnTopMid),
+            listOf(btnMiddleLeft, btnMiddle, btnMiddleRight),
+            listOf(btnBottomLeft, btnBottomMiddle, btnBottomRight)
         )
 
         // Set click listeners for each button
-        for (button in buttons) {
-            button.setOnClickListener { view -> onPlayButtonClick(view) }
+        for (list in buttons) {
+            for (button in list) {
+                button.setOnClickListener { view -> onPlayButtonClick(view) }
+            }
         }
 
         // Initialize the PlayerInfo text view
@@ -66,11 +71,12 @@ class MainActivity : AppCompatActivity() {
     fun newGame(view: View) {
        tvPlayerInfo.text = getString(R.string.player_x_s_turn)
 
-        for (button in buttons) {
-            button.text = " " // Set the text to blank
-            button.isEnabled = true // Ensure the button is enabled
+        for (list in buttons) {
+            for (button in list) {
+                button.text = " " // Set the text to blank
+                button.isEnabled = true // Ensure the button is enabled
+            }
         }
-
         xTurn = true
     }
 
@@ -84,10 +90,48 @@ class MainActivity : AppCompatActivity() {
             tvPlayerInfo.text = getString(R.string.player_x_s_turn)
             button.text = "O"
         }
-        // set xTurn to the opposite of what it currently is
-        xTurn = !xTurn
 
-        // disable the button so the user can no longer select it
-        button.isEnabled = false
+        if (isWin(button)) {
+            tvPlayerInfo.text = if (xTurn) "Player X wins!" else "Player O Wins!"
+        }
+        else {
+            // set xTurn to the opposite of what it currently is
+            xTurn = !xTurn
+
+            // disable the button so the user can no longer select it
+            button.isEnabled = false
+        }
+    }
+
+    private fun isWin(button: Button) : Boolean {
+        var buttonList = emptyList<Button>()
+        var buttonIndex = 0
+
+        // find the button location in buttons
+        for (i in 0..2) {
+            for (j in 0..2) {
+                if (buttons[i][j] == button){
+                    buttonList = buttons[i]
+                    buttonIndex = j
+                }
+            }
+        }
+
+        return isHorizontalWin(buttonList)
+    }
+
+    private fun isHorizontalWin(buttonList: List<Button>) : Boolean {
+        var win = true;
+
+        for (button in buttonList) {
+            // if it's x's turn they all need to be x's
+            if (xTurn) {
+                if (!button.text.equals("X")) win = false
+            }
+            else {
+                if (!button.text.equals("O")) win = false
+            }
+        }
+        return win
     }
 }
