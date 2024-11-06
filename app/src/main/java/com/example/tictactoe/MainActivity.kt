@@ -123,7 +123,8 @@ class MainActivity : AppCompatActivity() {
         for (i in 0..2) {
             // returns true if a row contains a win (all text values are the same)
             if (buttons[i][0].text.equals(buttons[i][1].text)
-            && buttons[i][2].text.equals(buttons[i][0].text)) return true
+                && buttons[i][2].text.equals(buttons[i][0].text)
+                && !buttons[i][0].text.isNullOrBlank()) return true
         }
         // returns false if no row contains a win
         return false
@@ -134,7 +135,8 @@ class MainActivity : AppCompatActivity() {
         for (i in 0..2) {
             // returns true if there is a win in the columns
             if(buttons[0][i].text.equals(buttons[1][i].text)
-                && buttons[2][i].text.equals(buttons[0][i].text)) return true
+                && buttons[2][i].text.equals(buttons[0][i].text)
+                && !buttons[0][i].text.isNullOrBlank()) return true
         }
         // returns false if no column contains a win
         return false
