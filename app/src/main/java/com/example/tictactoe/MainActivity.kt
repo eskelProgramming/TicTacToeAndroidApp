@@ -67,6 +67,9 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize the PlayerInfo text view
         tvPlayerInfo = findViewById(R.id.tvPlayerInfo)
+
+        // disable all buttons
+        disablePlayButtons()
     }
 
     fun newGame(view: View) {
