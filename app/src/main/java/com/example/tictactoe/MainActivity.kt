@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         // Made as a two dimensional array so that it's
         // easier to find wins
         buttons = listOf(
-            listOf(btnTopLeft, btnTopRight, btnTopMid),
+            listOf(btnTopLeft, btnTopMid, btnTopRight),
             listOf(btnMiddleLeft, btnMiddle, btnMiddleRight),
             listOf(btnBottomLeft, btnBottomMiddle, btnBottomRight)
         )
@@ -82,6 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun onPlayButtonClick(view: View) {
         val button = view as Button
+
+        // disable the button so the user can no longer select it
+        button.isEnabled = false
+
         if (xTurn) {
             button.text = "X"
             tvPlayerInfo.text = getString(R.string.player_O_s_turn)
@@ -91,63 +95,85 @@ class MainActivity : AppCompatActivity() {
             button.text = "O"
         }
 
-        if (isWin(button)) {
+        isWin()
+
+        isTie()
+
+        // set xTurn to the opposite of what it currently is
+        xTurn = !xTurn
+    }
+
+    private fun isWin(){
+        if (isHorizontalWin() || isVerticalWin() || isDiagonalWin()) {
             tvPlayerInfo.text = if (xTurn) "Player X wins!" else "Player O Wins!"
-        }
-        else {
-            // set xTurn to the opposite of what it currently is
-            xTurn = !xTurn
-
-            // disable the button so the user can no longer select it
-            button.isEnabled = false
+            disablePlayButtons()
         }
     }
 
-    private fun isWin(button: Button) : Boolean {
-        var buttonList = emptyList<Button>()
-        var buttonIndex = 0
+    private fun isHorizontalWin() : Boolean {
+        var win = true
 
-        // find the button location in buttons
         for (i in 0..2) {
-            for (j in 0..2) {
-                if (buttons[i][j] == button){
-                    buttonList = buttons[i]
-                    buttonIndex = j
-                }
+            win = if(xTurn) {
+                buttons[i][0].text.equals("X")
+                        && buttons[i][1].text.equals("X")
+                        && buttons[i][2].text.equals("X")
+            } else {
+                buttons[i][0].text.equals("O")
+                        && buttons[i][1].text.equals("O")
+                        && buttons[i][2].text.equals("O")
             }
+            if (win) return true
         }
-
-        return isHorizontalWin(buttonList) || isVerticalWin(buttonIndex)
+        return win
     }
 
-    private fun isHorizontalWin(buttonList: List<Button>) : Boolean {
-        var win = true
+    private fun isVerticalWin() : Boolean {
+        var win = false
 
-        for (button in buttonList) {
-            // if it's x's turn they all need to be x's
-            if (xTurn) {
-                if (!button.text.equals("X")) win = false
+        for (i in 0..2) {
+            win = if(xTurn) {
+                buttons[0][i].text.equals("X")
+                        && buttons[1][i].text.equals("X")
+                        && buttons[2][i].text.equals("X")
             }
             else {
-                if (!button.text.equals("O")) win = false
+                buttons[0][i].text.equals("O")
+                        && buttons[1][i].text.equals("O")
+                        && buttons[2][i].text.equals("O")
             }
+            if (win) return true
         }
 
         return win
     }
 
-    private fun isVerticalWin(buttonIndex : Int) : Boolean {
-        var win = true
+    private fun isDiagonalWin(): Boolean {
+        return if (btnTopLeft.text.equals(btnMiddle.text)
+            && btnMiddle.text.equals(btnBottomRight.text)
+            && !btnMiddle.text.isNullOrBlank()) true
+        else if (btnTopRight.text.equals(btnMiddle.text)
+            && btnMiddle.text.equals(btnBottomLeft.text)
+            && !btnMiddle.text.isNullOrBlank()) true
+        else false
+    }
 
+    private fun isTie(){
         for (list in buttons) {
-            if (xTurn) {
-                if (!list[buttonIndex].text.equals("X")) win = false
-            }
-            else {
-                if (!list[buttonIndex].text.equals("O")) win = false
+            for (button in list) {
+                if (button.text.isNullOrBlank()) return
             }
         }
 
-        return win
+        tvPlayerInfo.text = "It's a tie!"
+        disablePlayButtons()
+    }
+
+    private fun disablePlayButtons() {
+        for (list in buttons) {
+            for (button in list) {
+                button.isEnabled = false
+            }
+        }
     }
 }
